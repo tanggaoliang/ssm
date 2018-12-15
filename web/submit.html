@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SUBMIT</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+<div align="center">
+    <fomr>
+        id: <input type="text" id="id" value="123"> <br>
+        name: <input type="text" id="name" value="category 123"> <br>
+        <input id="sender" type="submit" value="SUBMIT">
+    </fomr>
+    <div id="messageDiv"></div>
+</div>
+<script>
+    $("#sender").click(function () {
+        var id = $("#id").val();
+        var name = $("#name").val();
+        var category = {"name": name, "id": id};
+        var jsonData = JSON.stringify(category);
+        var page = "submitCategory";
+
+        $.ajax({
+            type: "post",
+            url: page,
+            data: jsonData,
+            dataType: "json",
+            contentType: "application/json;characterEncoding=UTF-8",
+            success: function (result) {
+            }
+        });
+        alert("submit success!");
+    });
+
+</script>
+
+
+</body>
+</html>

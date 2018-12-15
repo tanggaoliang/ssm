@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GET ONE</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="AJAX" id="sender"> <br>
+<div id="messageDiv"></div>
+<script>
+    $("#sender").click(function () {
+        var url = "getOneCategory";
+        $.post(
+            url,
+            function (data) {
+                var json = JSON.parse(data);
+                var name = json.category.name;
+                var id = json.category.id;
+                $("#messageDiv").html("html  id:" + id + " name:" + name);
+
+            }
+        )
+    });
+</script>
+
+</body>
+</html>
